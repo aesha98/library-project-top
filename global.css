@@ -3,6 +3,10 @@ body {
  color:black;
 }
 
-h1{
+.main{
+  background-color: black;
+}
+
+.text{
   color: white;
 }
