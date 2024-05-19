@@ -6,7 +6,14 @@ document.querySelector("button").addEventListener("click",function() {
 	 console.log(myLibrary);
 });
 
-document.querySelector('#library')
+let table = document.querySelector('#library');
+
+function show(){
+for (let key in myLibrary){
+	let title = myLibrary[key].title;
+	console.log(title);
+}
+}
 
 /* constructor */
 function Book(title, author, numOfPages, read_status) {
@@ -23,7 +30,13 @@ function addBookToLibrary(title, author, numOfPages, read_status) {
 	return newBook;
 }
 
+/* Display books from array */
+function showBookLib(){
+
+}
+
 addBookToLibrary('Harry Potter', 'J.K Rowling', 135, true);
 addBookToLibrary('Lesson In Chemistry', 'J.R', 90, true);
 
-console.log(myLibrary);
+show();
+//console.log(myLibrary);
