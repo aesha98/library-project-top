@@ -25,7 +25,7 @@ function Book(title, author, numOfPages, read_status) {
 /* Insert new 'Book' to library*/
 function addBookToLibrary(title, author, numOfPages, read_status) {
 	let newBook = new Book(title, author, numOfPages, read_status);
-		$("#librarybody").append("<tr>" +
+		$("#librarybody tbody").append("<tr>" +
 		    "<td>" + newBook.title + "</td>" + 
 			"<td>" + newBook.author + "</td>" +
 			"<td>" + newBook.numOfPages + "</td>" +
