@@ -6,6 +6,7 @@ document.querySelector("button").addEventListener("click",function() {
 	 console.log(myLibrary);
 });
 
+document.querySelector('#library')
 
 /* constructor */
 function Book(title, author, numOfPages, read_status) {
