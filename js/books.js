@@ -1,16 +1,15 @@
 /*List of books*/
 const myLibrary = [];
 
-document.querySelector("button").addEventListener("click",function() {
-	 addBookToLibrary('Jarry Potter', 'J.K Rowling', 135, true);
-	 console.log(myLibrary);
-});
+$(document).ready(function(){
+  $("button").addEventListener("click", addBookToLibrary('Harry Potter','J.K Rowling', 125, true));
 
-let table = document.querySelector('#library');
+});
 
 function show(){
 for (let key in myLibrary){
 	let title = myLibrary[key].title;
+	
 	console.log(title);
 }
 }
@@ -26,13 +25,20 @@ function Book(title, author, numOfPages, read_status) {
 /* Insert new 'Book' to library*/
 function addBookToLibrary(title, author, numOfPages, read_status) {
 	let newBook = new Book(title, author, numOfPages, read_status);
-	myLibrary.push(newBook);
-	return newBook;
+		$("#librarybody").append("<tr>" +
+		    "<td>" + newBook.title + "</td>" + 
+			"<td>" + newBook.author + "</td>" +
+			"<td>" + newBook.numOfPages + "</td>" +
+			"<td>" + newBook.read_status + "</td>" +
+		    "</tr>");
+	 	myLibrary.push(newBook);
+		console.log(myLibrary);
+	
 }
 
 /* Display books from array */
 function showBookLib(){
-
+ 
 }
 
 addBookToLibrary('Harry Potter', 'J.K Rowling', 135, true);
