@@ -1,48 +1,114 @@
-/*List of books*/
-const myLibrary = [];
+const myLibrary = [
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "numOfPages": 180,
+        "read_status": true
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "numOfPages": 281,
+        "read_status": false
+    },
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "numOfPages": 328,
+        "read_status": true
+    },
+    {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "numOfPages": 279,
+        "read_status": false
+    },
+    {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "numOfPages": 214,
+        "read_status": true
+    },
+    {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "numOfPages": 310,
+        "read_status": true
+    },
+    {
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "numOfPages": 635,
+        "read_status": false
+    },
+    {
+        "title": "War and Peace",
+        "author": "Leo Tolstoy",
+        "numOfPages": 1225,
+        "read_status": false
+    },
+    {
+        "title": "The Odyssey",
+        "author": "Homer",
+        "numOfPages": 541,
+        "read_status": true
+    },
+    {
+        "title": "Crime and Punishment",
+        "author": "Fyodor Dostoevsky",
+        "numOfPages": 671,
+        "read_status": false
+    }
+];
 
-$(document).ready(function(){
-  querySelector('button').addEventListener("click", addBookToLibrary('Harry Potter','J.K Rowling', 125, true));
+const btn = document.querySelector('button');
+const tableBody = document.querySelector('tbody');
 
-});
+// Add a new book to the library when the button is clicked
+btn.onclick = () => addBookToLibrary('Percy Jackson', 'Rolling Stone', 125, true);
 
-function show(){
-for (let key in myLibrary){
-	let title = myLibrary[key].title;
-	
-	console.log(title);
-}
-}
-
-/* constructor */
+/* Constructor function for creating new book objects */
 function Book(title, author, numOfPages, read_status) {
-	this.title = title;
-	this.author = author;
-	this.numOfPages = numOfPages;
-	this.read_status = read_status;
+    this.title = title;
+    this.author = author;
+    this.numOfPages = numOfPages;
+    this.read_status = read_status;
 }
 
-/* Insert new 'Book' to library*/
+/* Function to add a new book to the library */
 function addBookToLibrary(title, author, numOfPages, read_status) {
-	let newBook = new Book(title, author, numOfPages, read_status);
-		document.querySelector("#librarybody tbody").append("<tr>" +
-		    "<td>" + newBook.title + "</td>" + 
-			"<td>" + newBook.author + "</td>" +
-			"<td>" + newBook.numOfPages + "</td>" +
-			"<td>" + newBook.read_status + "</td>" +
-		    "</tr>");
-	 	myLibrary.push(newBook);
-		console.log(myLibrary);
-	
+    let newBook = new Book(title, author, numOfPages, read_status);
+    myLibrary.push(newBook);
+    showBookLib();
+    console.log(myLibrary);
 }
 
-/* Display books from array */
-function showBookLib(){
- 
+/* Function to display the books in the library */
+function showBookLib() {
+    // Clear the table before displaying the books
+    tableBody.innerHTML = '';
+    
+    for (const book of myLibrary) {
+        // Create a new table row for each book
+        let trow = document.createElement('tr');
+
+        // Create and populate cells with book data
+        const title = trow.insertCell();
+        title.textContent = book.title;
+
+        const author = trow.insertCell();
+        author.textContent = book.author;
+
+        const numOfPages = trow.insertCell();
+        numOfPages.textContent = book.numOfPages;
+
+        const read_status = trow.insertCell();
+        read_status.textContent = book.read_status ? 'Read' : 'Unread';
+
+        // Append the row to the table body
+        tableBody.appendChild(trow);
+    }
 }
 
-addBookToLibrary('Harry Potter', 'J.K Rowling', 135, true);
-addBookToLibrary('Lesson In Chemistry', 'J.R', 90, true);
-
-show();
-//console.log(myLibrary);
+// Initial call to display the existing library on page load
+window.onload = showBookLib;
