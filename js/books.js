@@ -64,8 +64,12 @@ const myLibrary = [
 const btn = document.querySelector('button');
 const tableBody = document.querySelector('tbody');
 
+const clickbox = document.querySelector('#read_status');
+
+clickbox.addEventListener("click",checboxClickEvent, false);
+
 // Add a new book to the library when the button is clicked
-btn.onclick = () => addBookToLibrary('Percy Jackson', 'Rolling Stone', 125, true);
+btn.addEventListener("click", addBookToLibrary);
 
 /* Constructor function for creating new book objects */
 function Book(title, author, numOfPages, read_status) {
@@ -75,8 +79,22 @@ function Book(title, author, numOfPages, read_status) {
     this.read_status = read_status;
 }
 
+function checboxClickEvent(event){
+    let warn = "preventDefault() won't let you check this!<br>";
+    alert(warn);
+    event.preventDefault();
+}
+
 /* Function to add a new book to the library */
-function addBookToLibrary(title, author, numOfPages, read_status) {
+function addBookToLibrary() {
+    let title = document.getElementById('title').value;
+    console.log(title);
+    
+    let author = document.getElementById('author').value;
+    let numOfPages = document.getElementById('numOfpages').value;
+    let read_status = document.getElementById('read_status').value;
+    console.log(read_status);
+
     let newBook = new Book(title, author, numOfPages, read_status);
     myLibrary.push(newBook);
     showBookLib();

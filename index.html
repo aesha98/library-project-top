@@ -23,7 +23,27 @@
 	</table>
 	</div>
 	<p></p>
-	<button>Add New Book</button>
-	<script src="js/books.js" charset="UTF-8"></script>
+	<br>
+	
+	<div id="form-input">
+	<form class="form-body">
+		<label for="title">Book Title:</label><br>
+		<input type="text" id="title" name="title"> <br>
+
+		<label for="author">Author:</label><br>
+		<input type="text" id="author" name="author"> <br>
+
+		<label for="numOfpages">Number Of Pages:</label> <br>
+		<input type="number" id="numOfpages" name="numOfpages"> <br>
+
+		<label for="read_status">Status</label> <br>
+		<input type="checkbox" id="read_status" name="read_status"> <br>
+
+		</form><br>
+		<button>Add New Book</button>
+	</div>
+	
+	<div id="output-box"></div>
+	<script src="books.js" charset="UTF-8"></script>
 </body>
 </html>
