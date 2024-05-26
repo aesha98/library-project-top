@@ -66,7 +66,7 @@ const tableBody = document.querySelector('tbody');
 
 const clickbox = document.querySelector('#read_status');
 
-clickbox.addEventListener("click",checboxClickEvent, false);
+clickbox.addEventListener("click",checboxClickEvent, true);
 
 // Add a new book to the library when the button is clicked
 btn.addEventListener("click", addBookToLibrary);
@@ -81,6 +81,9 @@ function Book(title, author, numOfPages, read_status) {
 
 function checboxClickEvent(event){
     let warn = "preventDefault() won't let you check this!<br>";
+    const isRead = clickbox.checked == true ? 'Read' : 'Unread';
+    console.log('checkboxClickEvent(): ' + isRead);
+
     //alert(warn);
     //event.preventDefault();
 }
@@ -92,7 +95,7 @@ function addBookToLibrary() {
     
     let author = document.getElementById('author').value;
     let numOfPages = document.getElementById('numOfpages').value;
-    let read_status = document.getElementById('read_status').value;
+    let read_status = clickbox.checked;
     console.log(read_status);
 
     let newBook = new Book(title, author, numOfPages, read_status);
