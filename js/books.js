@@ -81,8 +81,8 @@ function Book(title, author, numOfPages, read_status) {
 
 function checboxClickEvent(event){
     let warn = "preventDefault() won't let you check this!<br>";
-    alert(warn);
-    event.preventDefault();
+    //alert(warn);
+    //event.preventDefault();
 }
 
 /* Function to add a new book to the library */
